@@ -1,7 +1,6 @@
 from django.db import models
 
 
-
 class TVShows(models.Model):
     image = models.URLField()
     name = models.CharField(max_length=250)

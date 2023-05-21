@@ -9,4 +9,3 @@ def top_movies(request):
         'movies': movies
     }
     return render(request, template_name='core/movies.html', context=context)
-
