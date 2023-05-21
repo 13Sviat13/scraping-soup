@@ -18,7 +18,7 @@ class ScrapeMoviesService:
         title_tags = soup.find_all('td', class_="titleColumn")
         rating_tags = soup.find_all('td', class_="ratingColumn imdbRating")
 
-        assert len(poster_tags) == len(title_tags) == len(rating_tags) == 250, "Error occurred while scrapping"
+        assert len(poster_tags) == len(title_tags) == len(rating_tags) == 250, "Error occurred while scrapping" # noqa
 
         results = []
         for i in range(len(poster_tags)):
@@ -36,11 +36,12 @@ class ScrapeMoviesService:
                 }
             )
         return results
+
     def parse_poster_image(self, tag):
         return tag.find('img')['src']
 
     def parse_title(self, tag):
-       return tag.find('a').text
+        return tag.find('a').text
 
     def parse_year(self, tag):
         return int(tag.find('span').text.lstrip('(').rstrip(')').strip())
@@ -70,7 +71,7 @@ class ScrapeTVShowsService:
         name_tags = soup.find_all('td', class_="titleColumn")
         rating_tags = soup.find_all('td', class_="ratingColumn imdbRating")
 
-        assert len(image_tags) == len(name_tags) == len(rating_tags) == 100, "Error occurred while scrapping"
+        assert len(image_tags) == len(name_tags) == len(rating_tags) == 100, "Error occurred while scrapping" # noqa
 
         results_TV = []
         for i in range(len(image_tags)):
@@ -125,4 +126,3 @@ if __name__ == '__main__':
     df = pd.DataFrame.from_dict(top_TVShows)
     output_file_path = Path(basedir) / 'TVShows.csv'
     df.to_csv(output_file_path)
-

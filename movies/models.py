@@ -9,4 +9,3 @@ class Movie(models.Model):
 
     def __repr__(self):
         return f"{self.title} ({self.year})"
-

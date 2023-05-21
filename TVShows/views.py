@@ -9,4 +9,3 @@ def top_TVShows(request):
         'TVShows': tvshows
     }
     return render(request, template_name='core/tvshows.html', context=context)
-
