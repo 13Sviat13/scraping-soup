@@ -1,4 +1,4 @@
 from django.contrib import admin # noqa
-# asyn
+# asyns
 
 # Register your models here.
