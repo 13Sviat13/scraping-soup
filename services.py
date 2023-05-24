@@ -112,6 +112,7 @@ if __name__ == '__main__':
     output_file_path = BASE_DIR / 'movies.csv'
     df.to_csv(output_file_path)
 
+
 class ScrapeTVShowsService(IMDBService):
 
     url = "https://www.imdb.com/chart/tvmeter"
@@ -146,7 +147,7 @@ class ScrapeTVShowsService(IMDBService):
     def persist_objectsTV(self, objects):
         tvshows = []
         for top_TVShows in objects:
-           tvshow  = (
+            tvshow = (
                 TVShows.objects
                 .filter(
                     name=top_TVShows.get('name'),
@@ -154,19 +155,19 @@ class ScrapeTVShowsService(IMDBService):
                 )
                 .first()
             )
-           if tvshow:
+            if tvshow:
                 tvshow.image = top_TVShows.get('image')
                 tvshow.rating = top_TVShows.get('rating')
                 tvshow.save()
-           else:
-               tvshow = TVShows(
-                   image=top_TVShows.get('image'),
-                   name=top_TVShows.get('name'),
-                   year=top_TVShows.get('year'),
-                   rating=top_TVShows.get('rating'),
-               )
-               tvshow.save()
-           tvshows.append(model_to_dict(tvshow))
+            else:
+                tvshow = TVShows(
+                    image=top_TVShows.get('image'),
+                    name=top_TVShows.get('name'),
+                    year=top_TVShows.get('year'),
+                    rating=top_TVShows.get('rating'),
+                )
+                tvshow.save()
+            tvshows.append(model_to_dict(tvshow))
         return tvshows
 
 

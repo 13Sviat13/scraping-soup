@@ -13,6 +13,7 @@ def top_TVShows(request):
     }
     return render(request, template_name='core/tvshows.html', context=context)
 
+
 def scraping_data(request):
     category = request.GET['category']
     service = IMDBService.get_service(category=category)
