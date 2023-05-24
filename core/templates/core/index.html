@@ -1,5 +1,41 @@
 {% extends "core/base.html" %}
 
 {% block content %}
-    <button id="scrape_movies_btn" type="button" class="btn btn-primary">Downland Movies</button>
+    <button id="scrape_movies_btn" type="button" class="btn btn-primary">Download Movies</button>
+    <button id="scrape_tvshows_btn" type="button" class="btn btn-primary">Download TVShows</button>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#scrape_movies_btn").click(function() {
+                $.ajax({
+                    url: "{% url 'scrape_data' %}?category=movies",
+                    type: "GET",
+                    success: function(response) {
+                        console.log(response);
+                        alert("Data Scraped");
+                    },
+                    error: function() {
+                        alert("Error calling API");
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("#scrape_tvshows_btn").click(function() {
+                $.ajax({
+                    url: "{% url 'scraping_data' %}?category=tvshows",
+                    type: "GET",
+                    success: function(response) {
+                        console.log(response);
+                        alert("Data Scraped");
+                    },
+                    error: function() {
+                        alert("Error calling API");
+                    }
+                });
+            });
+        });
+    </script>
 {% endblock %}

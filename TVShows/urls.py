@@ -1,7 +1,7 @@
 from django.urls import path
-from .views import top_TVShows
-
+from .views import top_TVShows, scraping_data
 
 urlpatterns = [
-    path('TVShows/', top_TVShows, name='TVShows')
+    path('', top_TVShows, name='TVShows'),
+    path('scraping_data/', scraping_data, name='scraping_data')
 ]

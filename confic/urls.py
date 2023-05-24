@@ -1,5 +1,5 @@
 """
-URL configuration for config project.
+URL configuration for confic project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
@@ -21,6 +21,6 @@ from core.views import index
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
-    path('', include('movies.urls')),
-    path('', include('TVShows.urls'))
+    path('movies/', include('movies.urls')),
+    path('TVShows/', include('TVShows.urls'))
 ]
